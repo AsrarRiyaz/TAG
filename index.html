@@ -1,1888 +1,536 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>THE AYAAN GAMER - Online Exam</title>
-
-<link rel="icon" type="image/png" href="favicon.png">
-
-<style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#ffffff;
-  color:#111827;
-}
-
-button,input{
-  font-family:inherit;
-}
-
-.header{
-  width:100%;
-  background:#ffffff;
-  border-bottom:1px solid #e5e7eb;
-  position:sticky;
-  top:0;
-  z-index:100;
-}
-
-.header-inner{
-  max-width:1100px;
-  margin:auto;
-  padding:14px 20px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-.brand img{
-  width:45px;
-  height:45px;
-  object-fit:contain;
-}
-
-.brand-name{
-  font-size:20px;
-  font-weight:800;
-}
-
-.brand-sub{
-  font-size:12px;
-  color:#6b7280;
-  margin-top:2px;
-}
-
-.container{
-  max-width:1100px;
-  margin:auto;
-  padding:25px 18px 60px;
-}
-
-.hero{
-  background:#f8fafc;
-  border:1px solid #e5e7eb;
-  border-radius:20px;
-  padding:35px 25px;
-  text-align:center;
-  margin-bottom:25px;
-}
-
-.hero img{
-  width:80px;
-  height:80px;
-  object-fit:contain;
-  margin-bottom:12px;
-}
-
-.hero h1{
-  font-size:30px;
-  margin-bottom:8px;
-}
-
-.hero p{
-  color:#6b7280;
-}
-
-.cards{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:16px;
-}
-
-.card{
-  background:white;
-  border:1px solid #e5e7eb;
-  border-radius:16px;
-  padding:22px;
-  box-shadow:0 3px 12px rgba(0,0,0,.04);
-}
-
-.card h3{
-  margin-bottom:8px;
-}
-
-.card p{
-  color:#6b7280;
-  font-size:14px;
-  line-height:1.5;
-  margin-bottom:18px;
-}
-
-.btn{
-  border:none;
-  border-radius:10px;
-  padding:12px 17px;
-  cursor:pointer;
-  font-weight:700;
-  background:#111827;
-  color:white;
-}
-
-.btn:hover{
-  opacity:.9;
-}
-
-.btn.secondary{
-  background:#f3f4f6;
-  color:#111827;
-  border:1px solid #d1d5db;
-}
-
-.btn.success{
-  background:#15803d;
-}
-
-.btn.danger{
-  background:#dc2626;
-}
-
-.section{
-  display:none;
-}
-
-.section.active{
-  display:block;
-}
-
-.panel{
-  max-width:700px;
-  margin:25px auto;
-  background:white;
-  border:1px solid #e5e7eb;
-  border-radius:18px;
-  padding:25px;
-  box-shadow:0 5px 20px rgba(0,0,0,.05);
-}
-
-.panel h2{
-  margin-bottom:8px;
-}
-
-.panel-desc{
-  color:#6b7280;
-  margin-bottom:20px;
-}
-
-.form-group{
-  margin-bottom:15px;
-}
-
-label{
-  display:block;
-  font-weight:700;
-  font-size:14px;
-  margin-bottom:7px;
-}
-
-input{
-  width:100%;
-  padding:13px;
-  border:1px solid #d1d5db;
-  border-radius:10px;
-  outline:none;
-  background:white;
-}
-
-input:focus{
-  border-color:#111827;
-}
-
-.form-actions{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-top:18px;
-}
-
-.message{
-  padding:13px;
-  border-radius:10px;
-  margin-top:15px;
-  display:none;
-  line-height:1.5;
-}
-
-.message.success{
-  display:block;
-  background:#ecfdf5;
-  color:#166534;
-  border:1px solid #bbf7d0;
-}
-
-.message.error{
-  display:block;
-  background:#fef2f2;
-  color:#991b1b;
-  border:1px solid #fecaca;
-}
-
-.message.info{
-  display:block;
-  background:#eff6ff;
-  color:#1e40af;
-  border:1px solid #bfdbfe;
-}
-
-.admit{
-  border:2px solid #111827;
-  border-radius:18px;
-  padding:25px;
-  margin-top:20px;
-  background:#fff;
-}
-
-.admit-head{
-  display:flex;
-  justify-content:space-between;
-  gap:15px;
-  align-items:center;
-  border-bottom:1px solid #e5e7eb;
-  padding-bottom:15px;
-  margin-bottom:18px;
-}
-
-.admit-logo{
-  width:60px;
-  height:60px;
-  object-fit:contain;
-}
-
-.admit-title{
-  font-size:20px;
-  font-weight:800;
-}
-
-.admit-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-}
-
-.info-box{
-  background:#f9fafb;
-  border:1px solid #e5e7eb;
-  border-radius:10px;
-  padding:12px;
-}
-
-.info-label{
-  color:#6b7280;
-  font-size:12px;
-}
-
-.info-value{
-  font-weight:700;
-  margin-top:4px;
-}
-
-.status{
-  display:inline-block;
-  padding:6px 10px;
-  border-radius:20px;
-  font-size:12px;
-  font-weight:800;
-}
-
-.status.live{
-  background:#dcfce7;
-  color:#166534;
-}
-
-.status.upcoming{
-  background:#fef3c7;
-  color:#92400e;
-}
-
-.status.closed{
-  background:#fee2e2;
-  color:#991b1b;
-}
-
-.exam-header{
-  position:sticky;
-  top:74px;
-  z-index:50;
-  background:white;
-  border:1px solid #e5e7eb;
-  padding:15px;
-  border-radius:14px;
-  margin-bottom:18px;
-}
-
-.exam-top{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  align-items:center;
-}
-
-.timer{
-  background:#111827;
-  color:white;
-  padding:9px 14px;
-  border-radius:9px;
-  font-weight:800;
-}
-
-.progress{
-  margin-top:12px;
-  height:8px;
-  background:#e5e7eb;
-  border-radius:20px;
-  overflow:hidden;
-}
-
-.progress-bar{
-  height:100%;
-  width:0%;
-  background:#111827;
-  transition:.2s;
-}
-
-.question{
-  background:white;
-  border:1px solid #e5e7eb;
-  border-radius:15px;
-  padding:20px;
-  margin-bottom:15px;
-}
-
-.question-number{
-  font-size:13px;
-  color:#6b7280;
-  margin-bottom:8px;
-}
-
-.question-text{
-  font-size:17px;
-  font-weight:700;
-  line-height:1.5;
-  margin-bottom:15px;
-}
-
-.option{
-  display:block;
-  padding:12px;
-  border:1px solid #d1d5db;
-  border-radius:10px;
-  margin:8px 0;
-  cursor:pointer;
-}
-
-.option:hover{
-  background:#f9fafb;
-}
-
-.option input{
-  width:auto;
-  margin-right:8px;
-}
-
-.submit-area{
-  background:#f8fafc;
-  border:1px solid #e5e7eb;
-  border-radius:15px;
-  padding:20px;
-  text-align:center;
-}
-
-.result-card{
-  border:1px solid #e5e7eb;
-  border-radius:15px;
-  padding:20px;
-  margin-top:15px;
-  background:white;
-}
-
-.result-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
-  margin-top:15px;
-}
-
-.big-result{
-  font-size:30px;
-  font-weight:900;
-}
-
-.loading{
-  display:none;
-  text-align:center;
-  padding:20px;
-}
-
-.spinner{
-  width:35px;
-  height:35px;
-  border:4px solid #e5e7eb;
-  border-top-color:#111827;
-  border-radius:50%;
-  animation:spin 1s linear infinite;
-  margin:auto;
-}
-
-@keyframes spin{
-  to{transform:rotate(360deg);}
-}
-
-.footer{
-  border-top:1px solid #e5e7eb;
-  text-align:center;
-  padding:25px;
-  color:#6b7280;
-  font-size:13px;
-}
-
-@media(max-width:750px){
-  .cards{
-    grid-template-columns:1fr;
-  }
-
-  .admit-grid,
-  .result-grid{
-    grid-template-columns:1fr;
-  }
-
-  .hero h1{
-    font-size:25px;
-  }
-
-  .header-inner{
-    padding:12px 14px;
-  }
-
-  .brand-name{
-    font-size:17px;
-  }
-
-  .container{
-    padding:18px 12px 45px;
-  }
-
-  .exam-header{
-    top:69px;
-  }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ayaan Gamer - Free Fire Exam</title>
+    <!-- Brand Logo / Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <style>
+        :root {
+            --primary: #ff9900;
+            --primary-hover: #e68a00;
+            --bg-main: #121212;
+            --bg-card: #1e1e1e;
+            --bg-question: #2a2a2a;
+            --text-main: #ffffff;
+            --text-muted: #aaaaaa;
+            --danger: #cc0000;
+            --success: #00ff00;
+        }
+
+        body { 
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            background: var(--bg-main); 
+            color: var(--text-main); 
+            margin: 0; 
+            padding: 20px; 
+        }
+
+        .container { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            background: var(--bg-card); 
+            padding: 30px; 
+            border-radius: 12px; 
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-top: 6px solid var(--primary); 
+        }
+        
+        .logo-container {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        .brand-logo {
+            width: 90px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            box-shadow: 0 4px 10px rgba(255, 153, 0, 0.3);
+        }
+
+        .tabs { 
+            display: flex; 
+            gap: 10px; 
+            margin-bottom: 25px; 
+        }
+
+        .tab-btn { 
+            flex: 1; 
+            padding: 14px; 
+            background: #333; 
+            color: #fff; 
+            border: none; 
+            cursor: pointer; 
+            border-radius: 6px; 
+            font-weight: bold; 
+            font-size: 1em;
+            transition: background 0.3s;
+        }
+
+        .tab-btn.active { 
+            background: var(--primary); 
+            color: #000; 
+        }
+
+        #timer-box { 
+            background: var(--danger); 
+            color: #fff; 
+            text-align: center; 
+            padding: 12px; 
+            font-size: 1.5em; 
+            font-weight: bold; 
+            border-radius: 8px; 
+            margin-bottom: 20px; 
+            position: sticky; 
+            top: 10px; 
+            z-index: 100; 
+            box-shadow: 0 4px 15px rgba(204, 0, 0, 0.4);
+            border: 2px solid #ff4d4d;
+        }
+
+        .header { 
+            text-align: center; 
+            margin-bottom: 25px; 
+            border-bottom: 2px solid #333; 
+            padding-bottom: 15px; 
+        }
+
+        h1 { 
+            color: var(--primary); 
+            margin: 0; 
+            text-transform: uppercase; 
+            letter-spacing: 2px;
+            font-size: 2.2em;
+        }
+        
+        .user-info { 
+            background: #252525; 
+            padding: 20px; 
+            border-radius: 8px; 
+            margin-bottom: 25px; 
+            border: 1px solid #444; 
+        }
+
+        .input-field { 
+            width: 100%; 
+            padding: 12px; 
+            margin-top: 8px; 
+            margin-bottom: 15px; 
+            background: #333; 
+            border: 1px solid #555; 
+            color: #fff; 
+            border-radius: 6px; 
+            box-sizing: border-box; 
+            font-size: 1em;
+        }
+
+        .question-card { 
+            background: var(--bg-question); 
+            margin-bottom: 20px; 
+            padding: 20px; 
+            border-radius: 8px; 
+            border-left: 4px solid var(--primary); 
+        }
+
+        .options-group { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 10px; 
+            margin-top: 12px; 
+        }
+
+        .option-label { 
+            display: flex; 
+            align-items: center; 
+            padding: 12px 15px; 
+            background: #333; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            transition: background 0.2s;
+        }
+
+        .option-label:hover {
+            background: #444;
+        }
+
+        input[type="radio"] { 
+            margin-right: 12px; 
+            accent-color: var(--primary); 
+            transform: scale(1.3); 
+        }
+
+        button.action-btn { 
+            width: 100%; 
+            background: var(--primary); 
+            color: #000; 
+            border: none; 
+            padding: 16px; 
+            font-size: 1.2em; 
+            font-weight: bold; 
+            text-transform: uppercase; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            transition: background 0.3s;
+        }
+
+        button.action-btn:hover:not(:disabled) { 
+            background: var(--primary-hover); 
+        }
+
+        button.action-btn:disabled {
+            background: #555;
+            color: #888;
+            cursor: not-allowed;
+        }
+
+        #loading { 
+            text-align: center; 
+            font-size: 1.4em; 
+            color: var(--primary); 
+            margin: 40px 0; 
+        }
+
+        #result-box, #search-result { 
+            display: none; 
+            margin-top: 20px; 
+            padding: 30px; 
+            background: #222; 
+            border-radius: 10px; 
+            text-align: center; 
+            border: 2px solid var(--primary); 
+        }
+
+        .score-text { 
+            font-size: 2.5em; 
+            color: var(--success); 
+            margin: 10px 0; 
+            font-weight: bold;
+        }
+
+        .success-icon {
+            font-size: 4em;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
-
 <body>
 
-<header class="header">
-  <div class="header-inner">
-
-    <div class="brand">
-      <img src="favicon.png" alt="THE AYAAN GAMER">
-      <div>
-        <div class="brand-name">THE AYAAN GAMER</div>
-        <div class="brand-sub">Online Examination System</div>
-      </div>
-    </div>
-
-  </div>
-</header>
-
-
-<main class="container">
-
-<!-- HOME -->
-
-<section id="homeSection" class="section active">
-
-  <div class="hero">
-
-    <img src="favicon.png" alt="Logo">
-
-    <h1>THE AYAAN GAMER</h1>
-
-    <p>Official Online Examination Portal</p>
-
-  </div>
-
-
-  <div class="cards">
-
-    <div class="card">
-      <h3>🎫 Admit Card</h3>
-      <p>
-        Verify your Admit Card and access your scheduled examination.
-      </p>
-
-      <button class="btn" onclick="showSection('admitSection')">
-        Verify Admit Card
-      </button>
-    </div>
-
-
-    <div class="card">
-      <h3>📝 Examination</h3>
-      <p>
-        Enter your Admit Card details to start an active examination.
-      </p>
-
-      <button class="btn" onclick="showSection('admitSection')">
-        Start Exam
-      </button>
-    </div>
-
-
-    <div class="card">
-      <h3>📊 Result</h3>
-      <p>
-        Check your examination status and view your report card after it is issued.
-      </p>
-
-      <button class="btn" onclick="showSection('resultSection')">
-        Check Result
-      </button>
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ADMIT CARD -->
-
-<section id="admitSection" class="section">
-
-  <div class="panel">
-
-    <h2>🎫 Verify Admit Card</h2>
-
-    <p class="panel-desc">
-      Enter your Admit Card ID and Gamer/Student ID.
-    </p>
-
-
-    <div class="form-group">
-      <label>Admit Card ID</label>
-      <input
-        id="admitCardId"
-        type="text"
-        placeholder="Example: ADMIT-XXXXXXXXXXXX">
-    </div>
-
-
-    <div class="form-group">
-      <label>Gamer ID / Student ID</label>
-      <input
-        id="gamerId"
-        type="text"
-        placeholder="Enter your Gamer ID">
-    </div>
-
-
-    <div class="form-actions">
-
-      <button class="btn" onclick="verifyAdmitCard()">
-        Verify
-      </button>
-
-      <button class="btn secondary" onclick="showSection('homeSection')">
-        Back
-      </button>
-
-    </div>
-
-
-    <div id="admitMessage" class="message"></div>
-
-    <div id="admitLoading" class="loading">
-      <div class="spinner"></div>
-      <p>Checking Admit Card...</p>
-    </div>
-
-
-    <div id="admitResult"></div>
-
-  </div>
-
-</section>
-
-
-<!-- EXAM -->
-
-<section id="examSection" class="section">
-
-  <div class="exam-header">
-
-    <div class="exam-top">
-
-      <div>
-        <strong id="examNameDisplay">Examination</strong>
-        <div id="examStudentDisplay"></div>
-      </div>
-
-      <div class="timer" id="timer">
-        00:00:00
-      </div>
-
-    </div>
-
-    <div class="progress">
-      <div class="progress-bar" id="progressBar"></div>
-    </div>
-
-  </div>
-
-
-  <div id="questionsContainer"></div>
-
-
-  <div class="submit-area">
-
-    <h3>Ready to Submit?</h3>
-
-    <p style="color:#6b7280;margin:8px 0 15px;">
-      After submission, your answers will be sent for admin review.
-      Your marks will not be shown immediately.
-    </p>
-
-    <button class="btn success" onclick="submitExam()">
-      Submit Examination
-    </button>
-
-  </div>
-
-</section>
-
-
-<!-- RESULT -->
-
-<section id="resultSection" class="section">
-
-  <div class="panel">
-
-    <h2>📊 Examination Result</h2>
-
-    <p class="panel-desc">
-      Enter your Student ID to check your examination status.
-    </p>
-
-
-    <div class="form-group">
-      <label>Student ID / Gamer ID</label>
-
-      <input
-        id="resultStudentId"
-        type="text"
-        placeholder="Enter Student ID">
-    </div>
-
-
-    <div class="form-actions">
-
-      <button class="btn" onclick="checkResult()">
-        Check Result
-      </button>
-
-      <button class="btn secondary" onclick="showSection('homeSection')">
-        Back
-      </button>
-
-    </div>
-
-
-    <div id="resultMessage" class="message"></div>
-
-    <div id="resultLoading" class="loading">
-      <div class="spinner"></div>
-      <p>Loading result...</p>
-    </div>
-
-
-    <div id="resultsContainer"></div>
-
-  </div>
-
-</section>
-
-</main>
-
-
-<footer class="footer">
-  © 2026 THE AYAAN GAMER • Online Examination System
-</footer>
-
-
-<script>
-
-/* =====================================================
-   CONFIG
-===================================================== */
-
-const API_URL =
-"https://script.google.com/macros/s/AKfycbwP22eCoGNuShoijMbAhsoEhoJmgcNrQcrm7fMI51MczysV86sJ06hWRxt34anmBxEB/exec";
-
-
-/* =====================================================
-   GLOBAL VARIABLES
-===================================================== */
-
-let currentAdmitCard = null;
-let currentExam = null;
-let currentQuestions = [];
-
-let examTimer = null;
-let remainingSeconds = 0;
-
-
-/* =====================================================
-   SECTION NAVIGATION
-===================================================== */
-
-function showSection(id){
-
-  document
-    .querySelectorAll('.section')
-    .forEach(function(section){
-      section.classList.remove('active');
-    });
-
-  document
-    .getElementById(id)
-    .classList.add('active');
-
-  window.scrollTo({
-    top:0,
-    behavior:'smooth'
-  });
-}
-
-
-/* =====================================================
-   MESSAGE
-===================================================== */
-
-function showMessage(elementId,text,type){
-
-  const el=document.getElementById(elementId);
-
-  el.className='message '+type;
-
-  el.textContent=text;
-
-}
-
-
-/* =====================================================
-   VERIFY ADMIT CARD
-===================================================== */
-
-async function verifyAdmitCard(){
-
-  const admitCardId =
-    document.getElementById('admitCardId').value.trim();
-
-  const gamerId =
-    document.getElementById('gamerId').value.trim();
-
-
-  if(!admitCardId || !gamerId){
-
-    showMessage(
-      'admitMessage',
-      'Please enter Admit Card ID and Gamer/Student ID.',
-      'error'
-    );
-
-    return;
-  }
-
-
-  document.getElementById('admitLoading').style.display='block';
-
-  document.getElementById('admitResult').innerHTML='';
-
-
-  try{
-
-    const url =
-      API_URL+
-      '?action=verifyAdmitCard'+
-      '&admitCardId='+encodeURIComponent(admitCardId)+
-      '&gamerId='+encodeURIComponent(gamerId);
-
-
-    const response =
-      await fetch(url);
-
-
-    const data =
-      await response.json();
-
-
-    if(!data.success){
-
-      throw new Error(data.error || 'Verification failed.');
-
-    }
-
-
-    currentAdmitCard=data.data.admitCard;
-    currentExam=data.data.exam;
-
-
-    showMessage(
-      'admitMessage',
-      'Admit Card verified successfully.',
-      'success'
-    );
-
-
-    displayAdmitCard(
-      currentAdmitCard,
-      currentExam
-    );
-
-
-  }catch(error){
-
-    showMessage(
-      'admitMessage',
-      error.message,
-      'error'
-    );
-
-  }finally{
-
-    document.getElementById('admitLoading').style.display='none';
-
-  }
-
-}
-
-
-/* =====================================================
-   DISPLAY ADMIT CARD
-===================================================== */
-
-function displayAdmitCard(card,exam){
-
-  let statusClass='upcoming';
-
-  if(exam.status==='LIVE'){
-    statusClass='live';
-  }
-
-  if(exam.status==='CLOSED'){
-    statusClass='closed';
-  }
-
-
-  document.getElementById('admitResult').innerHTML=`
-
-    <div class="admit">
-
-      <div class="admit-head">
-
-        <div>
-
-          <div class="admit-title">
-            ADMIT CARD
-          </div>
-
-          <div style="color:#6b7280;margin-top:4px;">
-            THE AYAAN GAMER
-          </div>
-
+    <div class="container">
+        <div class="header">
+            <div class="logo-container">
+                <img src="favicon.png" alt="Brand Logo" class="brand-logo" onerror="this.style.display='none'">
+            </div>
+            <h1>The Ayaan Gamer</h1>
+            <p style="color: var(--text-muted); margin: 5px 0 0 0;">Free Fire Exam Portal</p>
         </div>
 
-        <img
-          class="admit-logo"
-          src="favicon.png"
-          alt="Logo">
-
-      </div>
-
-
-      <div class="admit-grid">
-
-        <div class="info-box">
-          <div class="info-label">Candidate Name</div>
-          <div class="info-value">${escapeHtml(card.studentName)}</div>
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('exam')" id="tab-exam">Take Exam</button>
+            <button class="tab-btn" onclick="switchTab('check')" id="tab-check">Check Result</button>
         </div>
 
-        <div class="info-box">
-          <div class="info-label">Roll Number</div>
-          <div class="info-value">${escapeHtml(card.rollNumber)}</div>
+        <!-- EXAM SECTION -->
+        <div id="exam-section">
+            <div id="loading">⚡ Loading Portal...</div>
+
+            <!-- STEP 1: Enter Details (Timer does NOT start yet) -->
+            <div id="step-1-details" style="display: none;">
+                <div class="user-info">
+                    <h3 style="margin-top:0;">Step 1: Enter Student Details</h3>
+                    <label>Full Name:</label>
+                    <input type="text" id="student-name" class="input-field" placeholder="Enter full name" required>
+                    
+                    <label>WhatsApp Number (Used for Result checking):</label>
+                    <input type="tel" id="student-phone" class="input-field" placeholder="Enter WhatsApp number" required>
+                    
+                    <button type="button" class="action-btn" onclick="beginExam()">Start Exam 🚀</button>
+                    <p style="text-align:center; color:var(--text-muted); font-size:0.9em; margin-top:15px;">
+                        Timer will begin as soon as you click Start.
+                    </p>
+                </div>
+            </div>
+
+            <!-- STEP 2: Questions & Timer (Hidden until Step 1 is done) -->
+            <form id="step-2-quiz" style="display: none;">
+                <div id="timer-box">⏱️ Time Remaining: <span id="time-display">10:00</span></div>
+                
+                <div id="quiz-container"></div>
+                
+                <button type="submit" id="submit-btn" class="action-btn">Submit Exam</button>
+            </form>
         </div>
 
-        <div class="info-box">
-          <div class="info-label">Student ID</div>
-          <div class="info-value">${escapeHtml(card.studentId)}</div>
+        <!-- CHECK RESULT SECTION -->
+        <div id="check-section" style="display: none;">
+            <div class="user-info">
+                <h3 style="margin-top:0;">Find Your Exam Result</h3>
+                <label>Enter Registered WhatsApp Number:</label>
+                <input type="tel" id="search-phone" class="input-field" placeholder="e.g. 9876543210">
+                <button type="button" class="action-btn" onclick="searchScore()">Search Score</button>
+            </div>
+            <div id="search-result"></div>
         </div>
 
-        <div class="info-box">
-          <div class="info-label">Admit Card ID</div>
-          <div class="info-value">${escapeHtml(card.admitCardId)}</div>
+        <!-- SUCCESS/RESULT SCREEN -->
+        <div id="result-box">
+            <div class="success-icon" id="result-icon">✅</div>
+            <h2 id="status-title" style="color: var(--success); margin-top:0;">Exam Submitted Successfully!</h2>
+            
+            <div id="score-display" style="display: none;">
+                <p class="score-text"><span id="score">0</span> / 100</p>
+            </div>
+            
+            <p id="status-msg" style="color: #fff; font-size: 1.2em; line-height:1.5;"></p>
         </div>
+    </div>
 
-        <div class="info-box">
-          <div class="info-label">Examination</div>
-          <div class="info-value">${escapeHtml(exam.examName)}</div>
-        </div>
+    <script>
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx6oP4B8m55vynHgKp4kQVnSyBPVINIh4dMCi650jvFg1z1k41VQS8LqaPcy2RM6dvVjg/exec";
 
-        <div class="info-box">
-          <div class="info-label">Date</div>
-          <div class="info-value">${formatDate(exam.date)}</div>
-        </div>
+        let quizData = [];
+        let isReleasedGlobally = false;
+        let timeLeft = 600; // 10 minutes in seconds
+        let timerInterval;
+        
+        // Store user data
+        let currentStudentName = "";
+        let currentStudentPhone = "";
 
-        <div class="info-box">
-          <div class="info-label">Start Time</div>
-          <div class="info-value">${escapeHtml(exam.startTime)}</div>
-        </div>
-
-        <div class="info-box">
-          <div class="info-label">Duration</div>
-          <div class="info-value">${escapeHtml(exam.duration)}</div>
-        </div>
-
-      </div>
-
-
-      <div style="margin-top:18px;">
-
-        <span class="status ${statusClass}">
-          ${escapeHtml(exam.status)}
-        </span>
-
-      </div>
-
-
-      <div class="form-actions">
-
-        ${
-          exam.status==='LIVE'
-          ?
-          `<button class="btn success" onclick="startExam()">
-            Start Examination
-          </button>`
-          :
-          exam.status==='UPCOMING'
-          ?
-          `<button class="btn secondary" disabled>
-            Exam Not Started
-          </button>`
-          :
-          `<button class="btn danger" disabled>
-            Examination Closed
-          </button>`
+        // Tab Switching Logic
+        function switchTab(tab) {
+            document.getElementById('tab-exam').classList.remove('active');
+            document.getElementById('tab-check').classList.remove('active');
+            
+            if(tab === 'exam') {
+                document.getElementById('tab-exam').classList.add('active');
+                document.getElementById('exam-section').style.display = 'block';
+                document.getElementById('check-section').style.display = 'none';
+                document.getElementById('result-box').style.display = 'none';
+            } else {
+                document.getElementById('tab-check').classList.add('active');
+                document.getElementById('exam-section').style.display = 'none';
+                document.getElementById('check-section').style.display = 'block';
+                document.getElementById('result-box').style.display = 'none';
+            }
         }
 
-      </div>
-
-    </div>
-
-  `;
-
-}
-
-
-/* =====================================================
-   START EXAM
-===================================================== */
-
-async function startExam(){
-
-  if(!currentAdmitCard || !currentExam){
-
-    alert('Please verify your Admit Card first.');
-
-    return;
-  }
-
-
-  if(currentExam.status!=='LIVE'){
-
-    alert('This examination is not currently live.');
-
-    return;
-  }
-
-
-  try{
-
-    const url =
-      API_URL+
-      '?action=getExamQuestions'+
-      '&examId='+encodeURIComponent(currentExam.examId);
-
-
-    const response =
-      await fetch(url);
-
-
-    const data =
-      await response.json();
-
-
-    if(!data.success){
-
-      throw new Error(data.error || 'Unable to load questions.');
-
-    }
-
-
-    currentQuestions=data.data;
-
-
-    if(!currentQuestions.length){
-
-      throw new Error('No questions available.');
-
-    }
-
-
-    document.getElementById('examNameDisplay')
-      .textContent=currentExam.examName;
-
-    document.getElementById('examStudentDisplay')
-      .textContent=currentAdmitCard.studentName;
-
-
-    renderQuestions();
-
-
-    startTimer();
-
-
-    showSection('examSection');
-
-
-  }catch(error){
-
-    alert(error.message);
-
-  }
-
-}
-
-
-/* =====================================================
-   RENDER QUESTIONS
-===================================================== */
-
-function renderQuestions(){
-
-  const container =
-    document.getElementById('questionsContainer');
-
-
-  container.innerHTML='';
-
-
-  currentQuestions.forEach(function(q,index){
-
-    const div=document.createElement('div');
-
-    div.className='question';
-
-
-    div.innerHTML=`
-
-      <div class="question-number">
-        Question ${index+1} • ${escapeHtml(q.marks)} marks
-      </div>
-
-      <div class="question-text">
-        ${escapeHtml(q.question)}
-      </div>
-
-
-      ${createOption(q,'A',q.optionA)}
-      ${createOption(q,'B',q.optionB)}
-      ${createOption(q,'C',q.optionC)}
-      ${createOption(q,'D',q.optionD)}
-
-    `;
-
-
-    container.appendChild(div);
-
-  });
-
-
-  updateProgress();
-
-}
-
-
-function createOption(q,letter,text){
-
-  return `
-
-    <label class="option">
-
-      <input
-        type="radio"
-        name="question_${escapeHtml(q.questionId)}"
-        value="${letter}"
-        onchange="updateProgress()">
-
-      <strong>${letter}.</strong>
-      ${escapeHtml(text)}
-
-    </label>
-
-  `;
-
-}
-
-
-/* =====================================================
-   PROGRESS
-===================================================== */
-
-function updateProgress(){
-
-  let answered=0;
-
-
-  currentQuestions.forEach(function(q){
-
-    const selected =
-      document.querySelector(
-        `input[name="question_${CSS.escape(String(q.questionId))}"]:checked`
-      );
-
-
-    if(selected){
-      answered++;
-    }
-
-  });
-
-
-  const percentage =
-    currentQuestions.length
-    ?
-    (answered/currentQuestions.length)*100
-    :
-    0;
-
-
-  document.getElementById('progressBar')
-    .style.width=percentage+'%';
-
-}
-
-
-/* =====================================================
-   TIMER
-===================================================== */
-
-function startTimer(){
-
-  clearInterval(examTimer);
-
-
-  let duration=parseDuration(
-    currentExam.duration
-  );
-
-
-  if(!duration || duration<=0){
-
-    duration=60*60;
-
-  }
-
-
-  remainingSeconds=duration;
-
-
-  updateTimerDisplay();
-
-
-  examTimer=setInterval(function(){
-
-    remainingSeconds--;
-
-
-    updateTimerDisplay();
-
-
-    if(remainingSeconds<=0){
-
-      clearInterval(examTimer);
-
-      alert(
-        'Time is over. Your examination will be submitted.'
-      );
-
-      submitExam(true);
-
-    }
-
-  },1000);
-
-}
-
-
-function parseDuration(value){
-
-  const text=String(value || '').toLowerCase();
-
-
-  const hourMatch=
-    text.match(/(\d+(?:\.\d+)?)\s*(hour|hours|hr|hrs)/);
-
-
-  const minuteMatch=
-    text.match(/(\d+)\s*(minute|minutes|min|mins)/);
-
-
-  let seconds=0;
-
-
-  if(hourMatch){
-
-    seconds +=
-      Number(hourMatch[1])*3600;
-
-  }
-
-
-  if(minuteMatch){
-
-    seconds +=
-      Number(minuteMatch[1])*60;
-
-  }
-
-
-  if(!hourMatch && !minuteMatch){
-
-    const number=Number(text);
-
-    if(!isNaN(number)){
-
-      seconds=number*60;
-
-    }
-
-  }
-
-
-  return seconds;
-
-}
-
-
-function updateTimerDisplay(){
-
-  const h =
-    Math.floor(remainingSeconds/3600);
-
-  const m =
-    Math.floor((remainingSeconds%3600)/60);
-
-  const s =
-    remainingSeconds%60;
-
-
-  document.getElementById('timer')
-    .textContent =
-      String(h).padStart(2,'0')+':' +
-      String(m).padStart(2,'0')+':' +
-      String(s).padStart(2,'0');
-
-}
-
-
-/* =====================================================
-   SUBMIT EXAM
-===================================================== */
-
-async function submitExam(autoSubmit=false){
-
-  if(!autoSubmit){
-
-    const confirmSubmit =
-      confirm(
-        'Are you sure you want to submit your examination?'
-      );
-
-
-    if(!confirmSubmit){
-
-      return;
-
-    }
-
-  }
-
-
-  clearInterval(examTimer);
-
-
-  const answers={};
-
-
-  currentQuestions.forEach(function(q){
-
-    const selected =
-      document.querySelector(
-        `input[name="question_${CSS.escape(String(q.questionId))}"]:checked`
-      );
-
-
-    if(selected){
-
-      answers[q.questionId]=selected.value;
-
-    }
-
-  });
-
-
-  try{
-
-    const payload={
-
-      action:'submitExam',
-
-      admitCardId:
-        currentAdmitCard.admitCardId,
-
-      studentId:
-        currentAdmitCard.studentId,
-
-      examId:
-        currentExam.examId,
-
-      answers:answers
-
-    };
-
-
-    const response =
-      await fetch(API_URL,{
-
-        method:'POST',
-
-        headers:{
-          'Content-Type':'text/plain;charset=utf-8'
-        },
-
-        body:JSON.stringify(payload)
-
-      });
-
-
-    const data =
-      await response.json();
-
-
-    if(!data.success){
-
-      throw new Error(data.error || 'Submission failed.');
-
-    }
-
-
-    document.getElementById('questionsContainer').innerHTML=`
-
-      <div class="panel" style="text-align:center;">
-
-        <img
-          src="favicon.png"
-          style="width:70px;height:70px;object-fit:contain;">
-
-        <h2 style="margin-top:12px;">
-          Examination Submitted
-        </h2>
-
-        <p style="color:#6b7280;margin:12px 0;">
-          ${escapeHtml(data.data.message)}
-        </p>
-
-        <div class="message info" style="display:block;">
-          Submission ID:
-          <strong>${escapeHtml(data.data.submissionId)}</strong>
-        </div>
-
-        <div style="margin-top:20px;">
-
-          <button
-            class="btn"
-            onclick="showSection('resultSection')">
-            Check Status
-          </button>
-
-        </div>
-
-      </div>
-
-    `;
-
-
-    document.querySelector('.submit-area')
-      .style.display='none';
-
-
-  }catch(error){
-
-    alert(error.message);
-
-    startTimer();
-
-  }
-
-}
-
-
-/* =====================================================
-   CHECK RESULT
-===================================================== */
-
-async function checkResult(){
-
-  const studentId =
-    document
-      .getElementById('resultStudentId')
-      .value
-      .trim();
-
-
-  if(!studentId){
-
-    showMessage(
-      'resultMessage',
-      'Please enter your Student ID.',
-      'error'
-    );
-
-    return;
-
-  }
-
-
-  document.getElementById('resultLoading')
-    .style.display='block';
-
-  document.getElementById('resultsContainer')
-    .innerHTML='';
-
-
-  try{
-
-    const url =
-      API_URL+
-      '?action=getStudentStatus'+
-      '&studentId='+encodeURIComponent(studentId);
-
-
-    const response =
-      await fetch(url);
-
-
-    const data =
-      await response.json();
-
-
-    if(!data.success){
-
-      throw new Error(data.error || 'Unable to load result.');
-
-    }
-
-
-    showMessage(
-      'resultMessage',
-      'Status loaded successfully.',
-      'success'
-    );
-
-
-    renderResults(data.data);
-
-
-  }catch(error){
-
-    showMessage(
-      'resultMessage',
-      error.message,
-      'error'
-    );
-
-  }finally{
-
-    document.getElementById('resultLoading')
-      .style.display='none';
-
-  }
-
-}
-
-
-/* =====================================================
-   RENDER RESULTS
-===================================================== */
-
-function renderResults(data){
-
-  const container =
-    document.getElementById('resultsContainer');
-
-
-  container.innerHTML='';
-
-
-  if(!data.submissions.length){
-
-    container.innerHTML=`
-
-      <div class="result-card">
-
-        <h3>No examinations found</h3>
-
-        <p style="color:#6b7280;margin-top:8px;">
-          No submission is registered for this Student ID.
-        </p>
-
-      </div>
-
-    `;
-
-    return;
-
-  }
-
-
-  data.submissions.forEach(function(submission){
-
-    const result =
-      data.results.find(function(r){
-
-        return r.submissionId ===
-               submission.submissionId;
-
-      });
-
-
-    const card =
-      document.createElement('div');
-
-    card.className='result-card';
-
-
-    let content='';
-
-
-    if(result && result.status.toLowerCase()==='issued'){
-
-      content=`
-
-        <div class="result-grid">
-
-          <div class="info-box">
-            <div class="info-label">Marks</div>
-            <div class="big-result">
-              ${escapeHtml(result.marksObtained)}
-              /
-              ${escapeHtml(result.totalMarks)}
-            </div>
-          </div>
-
-          <div class="info-box">
-            <div class="info-label">Percentage</div>
-            <div class="big-result">
-              ${escapeHtml(result.percentage)}%
-            </div>
-          </div>
-
-          <div class="info-box">
-            <div class="info-label">Grade</div>
-            <div class="info-value">
-              ${escapeHtml(result.grade)}
-            </div>
-          </div>
-
-          <div class="info-box">
-            <div class="info-label">Result</div>
-            <div class="info-value">
-              ${escapeHtml(result.result)}
-            </div>
-          </div>
-
-        </div>
-
-        ${
-          result.remarks
-          ?
-          `<div style="margin-top:15px;">
-             <strong>Admin Remarks:</strong>
-             <p style="color:#6b7280;margin-top:5px;">
-               ${escapeHtml(result.remarks)}
-             </p>
-           </div>`
-          :
-          ''
+        // Fetch questions on load, but DO NOT start timer
+        async function fetchQuestions() {
+            try {
+                const response = await fetch(SCRIPT_URL);
+                const data = await response.json();
+
+                if (data.error) {
+                    document.getElementById("loading").innerHTML = "❌ " + data.message;
+                    return;
+                }
+
+                quizData = data.questions || [];
+                isReleasedGlobally = data.released;
+                
+                // Hide loading, show Step 1 (Details form)
+                document.getElementById("loading").style.display = "none";
+                document.getElementById("step-1-details").style.display = "block";
+                
+            } catch (err) {
+                document.getElementById("loading").innerHTML = "❌ <b>Failed to connect to server.</b><br><small>Check network connection or Apps Script URL.</small>";
+            }
         }
 
-      `;
+        // Triggered when user clicks "Start Exam"
+        function beginExam() {
+            currentStudentName = document.getElementById("student-name").value.trim();
+            currentStudentPhone = document.getElementById("student-phone").value.trim();
 
-    }else{
+            if (!currentStudentName || !currentStudentPhone) {
+                alert("Please enter both your Full Name and WhatsApp Number before starting.");
+                return;
+            }
 
-      content=`
-
-        <div class="message info" style="display:block;">
-
-          ⏳ Your examination is currently
-          <strong>${escapeHtml(submission.status)}</strong>.
-
-          <br><br>
-
-          Your marks will appear only after the
-          administrator reviews the examination and
-          issues the report card.
-
-        </div>
-
-      `;
-
-    }
-
-
-    card.innerHTML=`
-
-      <h3>
-        Examination
-      </h3>
-
-      <p style="color:#6b7280;margin-top:5px;">
-        Exam ID:
-        ${escapeHtml(submission.examId)}
-      </p>
-
-      <p style="color:#6b7280;margin-top:5px;">
-        Submission ID:
-        ${escapeHtml(submission.submissionId)}
-      </p>
-
-      ${content}
-
-    `;
-
-
-    container.appendChild(card);
-
-  });
-
-
-  /* Report Cards */
-
-  if(data.reportCards && data.reportCards.length){
-
-    const heading =
-      document.createElement('div');
-
-    heading.style.marginTop='25px';
-
-    heading.innerHTML=
-      '<h2>📄 Issued Report Cards</h2>';
-
-    container.appendChild(heading);
-
-
-    data.reportCards.forEach(function(report){
-
-      const card =
-        document.createElement('div');
-
-      card.className='result-card';
-
-
-      card.innerHTML=`
-
-        <div style="text-align:center;">
-
-          <img
-            src="favicon.png"
-            style="width:60px;height:60px;object-fit:contain;">
-
-          <h2 style="margin-top:8px;">
-            THE AYAAN GAMER
-          </h2>
-
-          <p style="color:#6b7280;">
-            Official Examination Report Card
-          </p>
-
-        </div>
-
-
-        <div class="result-grid">
-
-          <div class="info-box">
-            <div class="info-label">Candidate</div>
-            <div class="info-value">
-              ${escapeHtml(report.name)}
-            </div>
-          </div>
-
-          <div class="info-box">
-            <div class="info-label">Exam</div>
-            <div class="info-value">
-              ${escapeHtml(report.exam)}
-            </div>
-          </div>
-
-          <div class="info-box">
-            <div class="info-label">Marks</div>
-            <div class="info-value">
-              ${escapeHtml(report.marks)}
-            </div>
-          </div>
-
-          <div class="info-box">
-            <div class="info-label">Percentage</div>
-            <div class="info-value">
-              ${escapeHtml(report.percentage)}%
-            </div>
-          </div>
-
-          <div class="info-box">
-            <div class="info-label">Grade</div>
-            <div class="info-value">
-              ${escapeHtml(report.grade)}
-            </div>
-          </div>
-
-          <div class="info-box">
-            <div class="info-label">Result</div>
-            <div class="info-value">
-              ${escapeHtml(report.result)}
-            </div>
-          </div>
-
-        </div>
-
-
-        ${
-          report.remarks
-          ?
-          `<div style="margin-top:15px;">
-            <strong>Remarks</strong>
-            <p style="color:#6b7280;margin-top:5px;">
-              ${escapeHtml(report.remarks)}
-            </p>
-          </div>`
-          :
-          ''
+            // Hide Details form, Show Quiz & Timer
+            document.getElementById("step-1-details").style.display = "none";
+            document.getElementById("step-2-quiz").style.display = "block";
+            
+            renderQuiz();
+            startTimer();
         }
 
+        // Generate Question UI
+        function renderQuiz() {
+            const container = document.getElementById("quiz-container");
+            container.innerHTML = "";
 
-        <div style="
-          text-align:center;
-          margin-top:20px;
-          color:#6b7280;
-          font-size:13px;
-        ">
+            if (quizData.length === 0) {
+                container.innerHTML = "<p style='text-align:center;'>No questions available. Please contact admin.</p>";
+                return;
+            }
 
-          Issued:
-          ${formatDate(report.issueDate)}
+            quizData.forEach((item, index) => {
+                let html = `
+                    <div class="question-card">
+                        <div style="font-weight: bold; font-size: 1.15em;">${index + 1}. ${item.q}</div>
+                        <div class="options-group">
+                `;
+                item.opts.forEach(opt => {
+                    if (opt) {
+                        html += `
+                            <label class="option-label">
+                                <input type="radio" name="${item.id}" value="${opt}" required>
+                                ${opt}
+                            </label>
+                        `;
+                    }
+                });
+                html += `</div></div>`;
+                container.innerHTML += html;
+            });
+        }
 
-        </div>
+        // Start Timer Countdown
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                let m = Math.floor(timeLeft / 60);
+                let s = timeLeft % 60;
+                document.getElementById("time-display").textContent = `${m}:${s < 10 ? '0' : ''}${s}`;
 
-      `;
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    alert("Time is up! Submitting your exam automatically.");
+                    submitExam();
+                }
+            }, 1000);
+        }
 
+        // Submit Logic (Fixes button sticking and adds Green Tick)
+        async function submitExam() {
+            clearInterval(timerInterval);
+            
+            const submitBtn = document.getElementById("submit-btn");
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Submitting... Please Wait ⏳";
 
-      container.appendChild(card);
+            // Calculate Score locally
+            let score = 0;
+            const formData = new FormData(document.getElementById("step-2-quiz"));
+            const maxScore = quizData.length * 5;
 
-    });
+            quizData.forEach(item => {
+                if (formData.get(item.id) === item.a) score += 5;
+            });
 
-  }
+            const payload = {
+                name: currentStudentName,
+                phone: currentStudentPhone,
+                score: score
+            };
 
-}
+            try {
+                const res = await fetch(SCRIPT_URL, {
+                    method: "POST",
+                    body: JSON.stringify(payload)
+                });
+                const resData = await res.json();
 
+                // Handle Duplicate / Error
+                if (resData.result === "error") {
+                    showResultScreen("❌", "Submission Failed", resData.message, "var(--danger)");
+                    // Re-enable button so user isn't stuck if it's a network glitch
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = "Submit Exam";
+                    return;
+                }
 
-/* =====================================================
-   HELPERS
-===================================================== */
+                // Handle Success
+                let isReleased = resData.released !== undefined ? resData.released : isReleasedGlobally;
+                
+                if (isReleased) {
+                    showResultScreen("✅", "Exam Results Released!", "BOOYAH! Your score has been published.", "var(--success)", score, maxScore);
+                } else {
+                    showResultScreen("✅", "Exam Submitted Successfully!", "🔒 Results are currently locked by Admin.<br>Come back later and use the 'Check Result' tab to view your score!", "var(--success)");
+                }
 
-function escapeHtml(value){
+            } catch(e) {
+                // If Fetch fails entirely (network offline)
+                showResultScreen("⚠️", "Network Error", "Failed to connect to the server. Check your connection and try again.", "var(--primary)");
+                submitBtn.disabled = false;
+                submitBtn.innerText = "Submit Exam";
+            }
+        }
 
-  return String(value == null ? '' : value)
+        // Helper to update Result Screen UI
+        function showResultScreen(icon, title, message, color, score = null, maxScore = null) {
+            document.getElementById("exam-section").style.display = "none";
+            const resultBox = document.getElementById("result-box");
+            resultBox.style.display = "block";
+            window.scrollTo(0, 0);
 
-    .replace(/&/g,'&amp;')
-    .replace(/</g,'&lt;')
-    .replace(/>/g,'&gt;')
-    .replace(/"/g,'&quot;')
-    .replace(/'/g,'&#039;');
+            document.getElementById("result-icon").innerText = icon;
+            
+            const titleEl = document.getElementById("status-title");
+            titleEl.innerText = title;
+            titleEl.style.color = color;
+            
+            document.getElementById("status-msg").innerHTML = message;
 
-}
+            const scoreDisplay = document.getElementById("score-display");
+            if (score !== null && maxScore !== null) {
+                scoreDisplay.style.display = "block";
+                document.querySelector(".score-text").innerHTML = `<span id="score">${score}</span> / ${maxScore}`;
+            } else {
+                scoreDisplay.style.display = "none";
+            }
+        }
 
+        // Search Result logic
+        async function searchScore() {
+            const phone = document.getElementById("search-phone").value.trim();
+            const resultDiv = document.getElementById("search-result");
+            
+            if (!phone) {
+                alert("Please enter your registered WhatsApp number!");
+                return;
+            }
 
-function formatDate(value){
+            resultDiv.style.display = "block";
+            resultDiv.innerHTML = "<p>Searching database...</p>";
 
-  if(!value){
-    return '';
-  }
+            try {
+                const response = await fetch(`${SCRIPT_URL}?action=checkScore&phone=${encodeURIComponent(phone)}`);
+                const data = await response.json();
 
+                if (!data.released) {
+                    resultDiv.innerHTML = `<p style="color: #ff9900; font-size: 1.2em; margin:0;">${data.message}</p>`;
+                } else if (data.found) {
+                    const maxScore = quizData.length > 0 ? (quizData.length * 5) : 100;
+                    resultDiv.innerHTML = `
+                        <div style="background: #1a3a1a; padding: 20px; border-radius: 8px; border: 1px solid #00ff00;">
+                            <img src="favicon.png" alt="Logo" style="width:50px; border-radius:50%; margin-bottom:10px;" onerror="this.style.display='none'">
+                            <h3 style="margin-top:0;">Student: ${data.name}</h3>
+                            <p class="score-text">${data.score} / ${maxScore}</p>
+                            <p style="margin-bottom:0; color:#aaa;">Official Score Verified ✅</p>
+                        </div>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `<p style="color: #ff4d4d; font-size: 1.2em; margin:0;">${data.message}</p>`;
+                }
+            } catch (e) {
+                resultDiv.innerHTML = "<p style='color:red; margin:0;'>Error retrieving score. Please check your connection.</p>";
+            }
+        }
 
-  const d=new Date(value);
+        // Prevent default form submission
+        document.getElementById("step-2-quiz").addEventListener("submit", function(e) {
+            e.preventDefault();
+            submitExam();
+        });
 
-
-  if(isNaN(d.getTime())){
-
-    return escapeHtml(value);
-
-  }
-
-
-  return d.toLocaleDateString(
-    'en-IN',
-    {
-      day:'2-digit',
-      month:'short',
-      year:'numeric'
-    }
-  );
-
-}
-
-
-/* =====================================================
-   PREVENT ACCIDENTAL EXAM CLOSING
-===================================================== */
-
-window.addEventListener(
-  'beforeunload',
-  function(e){
-
-    if(
-      currentQuestions.length &&
-      remainingSeconds>0
-    ){
-
-      e.preventDefault();
-      e.returnValue='';
-
-    }
-
-  }
-);
-
-</script>
-
+        // Initialize
+        window.onload = fetchQuestions;
+    </script>
 </body>
 </html>
